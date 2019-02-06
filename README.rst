@@ -18,7 +18,15 @@ This is an efficient implementation of some functions that are useful for implem
 
 `simpair_indices`
     Find the indices of hashes in a sequence that differ by less than a certain number of bits. It includes arguments for rotating and grouping hashes. It can be used to help efficiently implement online or batch near duplicate detection, for example as described in `Detecting Near-Duplicates for Web Crawling <http://www.wwwconference.org/www2007/papers/paper215.pdf>`_ by Gurmeet Manku, Arvind Jain, and Anish Sarma.
+    
+Installation
+------------
 
+Via git clone::
+    
+    git clone https://github.com/scrapinghub/python-simhash.git
+    cd python-simhash
+    python setup.py install
 
 Example usage
 -------------
@@ -26,9 +34,15 @@ Example usage
 Generate hashes::
 
     >>> from simhash import fingerprint
+    >>>
+    >>> # python 2.x
     >>> hash1 = fingerprint(map(hash, "some text we want to hash"))
     >>> hash2 = fingerprint(map(hash, "some more text we want to hash"))
-
+    >>>
+    >>> # python 3.x
+    >>> hash1 = fingerprint(list(map(hash, "some text we want to hash")))
+    >>> hash2 = fingerprint(list(map(hash, "some more text we want to hash")))
+    
 Measure distance between hashes::
 
     >>> from simhash import hamming_distance
